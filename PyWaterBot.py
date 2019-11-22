@@ -73,7 +73,7 @@ def send_mess(message):
         bot.send_message(message.chat.id, "Ваш репорт примет мой создатель и обязательно исправит ошибку! Уведомление и текст был отправлен моему создателю.")
         print("Сообщение номер " + str(message.message_id) + " отправлено.")
         bot.send_message(563631084, "!!!АЛЯРМ!!! Пришёл репорт. Пожалуйста проверьте консоль.")
-        print("Пришёл репорт от пользователя " + message.chat.first_name + " " + message.chat.last_name + "с описанием: " + message.text)
+        print("Пришёл репорт от пользователя " + message.chat.first_name + " " + message.chat.last_name + " с описанием: " + message.text)
         
 
 bot.polling( none_stop = True )
