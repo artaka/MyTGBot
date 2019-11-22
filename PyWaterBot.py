@@ -60,14 +60,20 @@ Water_Complete_Message = "Сейчас в Мозыре " + Global_Status + " и 
 @bot.message_handler(content_types=['text'])
 def send_mess(message):
     if message.text == "Погода":
-        bot.reply_to(message, Water_Complete_Message + RecommClother)
+        bot.reply_to(message, Water_Complete_Message)
+        bot.send_message(message.chat.id, RecommClother)
         print("Сообщение номер " + str(message.message_id) + " отправлено")
         print("Сообщение пользователя: " + str(message.text))
     elif message.text == "Привет":
         bot.reply_to(message, "Добрый день хозяин.")
-        bot.send_message(563631084, "Чем могу помочь?")
+        bot.send_message(message.chat.id, "Чем могу помочь?")
         print("Сообщение номер " + str(message.message_id) + " отправлено")
         print("Сообщение пользователя: " + str(message.text))
+    elif message.text.find('report') != -1:
+        bot.send_message(message.chat.id, "Ваш репорт примет мой создатель и обязательно исправит ошибку! Уведомление и текст был отправлен моему создателю.")
+        print("Сообщение номер " + str(message.message_id) + " отправлено.")
+        bot.send_message(563631084, "!!!АЛЯРМ!!! Пришёл репорт. Пожалуйста проверьте консоль.")
+        print("Пришёл репорт от пользователя " + message.chat.first_name + " " + message.chat.last_name + "с описанием: " + message.text)
         
 
 bot.polling( none_stop = True )
